@@ -142,7 +142,7 @@ namespace Notify_Slack_of_web_meetings.CLI
                         as Outlook.Folder;
 
                 DateTime startDate = DateTime.Today.AddDays(1);
-                DateTime endDate = startDate.AddDays(1);
+                DateTime endDate = startDate.AddDays(3);
                 Outlook.Items nextOperatingDayAppointments = GetAppointmentsInRange(calFolder, startDate, endDate);
 
                 #endregion
@@ -216,6 +216,10 @@ namespace Notify_Slack_of_web_meetings.CLI
                 var accessToken = result.AccessToken;
                 var defaultRequestHeaders = s_HttpClient.DefaultRequestHeaders;
                 defaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                // TODO ここの動作確認から
+                defaultRequestHeaders.Add("x-nsw-email-address", setting.MailAddress);
+                defaultRequestHeaders.Add("x-nsw-authKey", setting.AuthorizationKey);
 
                 #endregion
 
