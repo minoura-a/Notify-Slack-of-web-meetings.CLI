@@ -217,6 +217,10 @@ namespace Notify_Slack_of_web_meetings.CLI
                 var defaultRequestHeaders = s_HttpClient.DefaultRequestHeaders;
                 defaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
+                // TODO ここの動作確認から
+                defaultRequestHeaders.Add("x-nsw-email-address", setting.MailAddress);
+                defaultRequestHeaders.Add("x-nsw-authKey", setting.AuthorizationKey);
+
                 #endregion
 
                 #region 引数のパスに存在するsetting.jsonに設定されているエンドポイントURLを使い、Web会議情報を削除

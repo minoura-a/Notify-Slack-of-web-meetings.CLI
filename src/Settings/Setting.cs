@@ -30,5 +30,17 @@ namespace Notify_Slack_of_web_meetings.CLI.Settings
 		/// </summary>
 		[JsonProperty("endpointUrl")]
 		public string EndpointUrl { get; set; }
+
+		/// <summary>
+		/// メールアドレス
+		/// </summary>
+		[JsonProperty("mailAddress")]
+		public string MailAddress { get; set; }
+
+		/// <summary>
+		/// 認可キー
+		/// </summary>
+		/// [JsonProperty("authorizationKey")]
+		public string AuthorizationKey { get; set; }
 	}
 }
